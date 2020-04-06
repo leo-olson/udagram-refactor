@@ -8,15 +8,65 @@ A basic Ionic client web application which consumes the RestAPI Backend.
 2. [The RestAPI Feed Backend](/udacity-c3-restapi-feed), a Node-Express feed microservice.
 3. [The RestAPI User Backend](/udacity-c3-restapi-user), a Node-Express user microservice.
 
-## Getting Setup
+## Getting Started
 
-> _tip_: this frontend is designed to work with the RestAPI backends). It is recommended you stand up the backend first, test using Postman, and then the frontend should integrate.
+The following tools need to be installed on your machine:
 
-### Installing Node and NPM
-This project depends on Nodejs and Node Package Manager (NPM). Before continuing, you must download and install Node (NPM is included) from [https://nodejs.com/en/download](https://nodejs.org/en/download/).
+Docker
+AWS CLI
+Kubectl
+KubeOne
+Furthermore, you need to have:
 
-### Installing Ionic Cli
-The Ionic Command Line Interface is required to serve and build the frontend. Instructions for installing the CLI can be found in the [Ionic Framework Docs](https://ionicframework.com/docs/installation/cli).
+an Amazon Web Services account
+a DockerHub account
+
+### Clone the repository
+Clone the repository on your local machine
+
+### S3 Bucket Setup
+
+Save the following policy in the Bucket policy editor:
+```
+{
+ "Version": "2012-10-17",
+ "Id": "Policy1565786082197",
+ "Statement": [
+ {
+ "Sid": "Stmt1565786073670",
+ "Effect": "Allow",
+ "Principal": {
+ "AWS": "__YOUR_USER_ARN__"
+ },
+ "Action": [
+ "s3:GetObject",
+ "s3:PutObject"
+ ],
+ "Resource": "__YOUR_BUCKET_ARN__/*"
+ }
+ ]
+}
+```
+Modify the variables __YOUR_USER_ARN__ and __YOUR_BUCKET_ARN__ by your own data.
+
+CORS configuration
+Save the following configuration in the CORS configuration Editor:
+```
+<?xml version="1.0" encoding="UTF-8"?>
+ <CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+ <CORSRule>
+ <AllowedOrigin>*</AllowedOrigin>
+ <AllowedMethod>GET</AllowedMethod>
+ <AllowedMethod>POST</AllowedMethod>
+ <AllowedMethod>DELETE</AllowedMethod>
+ <AllowedMethod>PUT</AllowedMethod>
+ <MaxAgeSeconds>3000</MaxAgeSeconds>
+ <AllowedHeader>Authorization</AllowedHeader>
+ <AllowedHeader>Content-Type</AllowedHeader>
+ </CORSRule>
+</CORSConfiguration>
+```
+
 
 ### Installing project dependencies
 
