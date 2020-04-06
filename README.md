@@ -11,7 +11,7 @@ A basic Ionic client web application which consumes the RestAPI Backend.
 ## Getting Started
 
 The following tools need to be installed on your machine:
-
+```
 Docker
 AWS CLI
 Kubectl
@@ -20,7 +20,7 @@ Furthermore, you need to have:
 
 an Amazon Web Services account
 a DockerHub account
-
+```
 ### Clone the repository
 Clone the repository on your local machine
 
